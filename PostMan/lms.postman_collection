@@ -210,6 +210,38 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "localhost:8080/api/learner/enroll/course/2/1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"couponCode\":\"DIWALI20\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/learner/enroll/course/2/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"learner",
+						"enroll",
+						"course",
+						"2",
+						"1"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
