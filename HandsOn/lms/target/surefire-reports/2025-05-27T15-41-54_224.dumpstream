@@ -1,0 +1,5 @@
+# Created at 2025-05-27T15:41:55.896
+Boot Manifest-JAR contains absolute paths in classpath 'D:\Hexaware Training\Hexa_FSD_Java_React\HandsOn\lms\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+

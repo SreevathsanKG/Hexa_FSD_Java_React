@@ -16,15 +16,17 @@ public class LearnerCourseController {
 	private LearnerCourseService learnerCourseService;
 	
 	/*
-	 * AIM: enroll learner to course by adding record in relation entity
+	 * AIM: Enroll learner to course by adding record in relation entity
 	 * PATH: /api/learner/enroll/course/{learnerId}/{courseId}
 	 * METHOD: POST 
-	 * Input: Path variable for learnerId,courseId , Request Body for LearnerCourse - { couponCode: ""}
+	 * PARAM: Path variable(learnerId,courseId) , Request Body ({ couponCode: ""})
 	 * Response: LearnerCourse 
 	 * 
 	 * */
 	@PostMapping("/api/learner/enroll/course/{learnerId}/{courseId}")
-	public LearnerCourse enrollLearnerInCourse(@PathVariable int learnerId, @PathVariable int courseId, @RequestBody LearnerCourse learnerCourse) {
-		return learnerCourseService.enrollLearnerInCourse(learnerId, courseId, learnerCourse);
+	public LearnerCourse enrollLearnerInCourse(@PathVariable int learnerId, 
+									  @PathVariable int courseId, 
+									  @RequestBody LearnerCourse learnerCourse) {
+		return learnerCourseService.enrollLearnerInCourse(learnerId,courseId,learnerCourse);
 	}
 }

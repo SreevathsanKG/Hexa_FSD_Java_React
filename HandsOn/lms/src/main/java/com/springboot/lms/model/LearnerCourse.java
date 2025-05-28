@@ -25,36 +25,45 @@ public class LearnerCourse {
 	private Learner learner;
 	@ManyToOne
 	private Course course;
-	
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public LocalDate getEnrollDate() {
 		return enrollDate;
 	}
+
 	public void setEnrollDate(LocalDate enrollDate) {
 		this.enrollDate = enrollDate;
 	}
+
 	public String getCouponCode() {
 		return couponCode;
 	}
+
 	public void setCouponCode(String couponCode) {
 		this.couponCode = couponCode;
 	}
+
 	public Learner getLearner() {
 		return learner;
 	}
+
 	public void setLearner(Learner learner) {
 		this.learner = learner;
 	}
+
 	public Course getCourse() {
 		return course;
 	}
+
 	public void setCourse(Course course) {
 		this.course = course;
 	}
-	
+
 }

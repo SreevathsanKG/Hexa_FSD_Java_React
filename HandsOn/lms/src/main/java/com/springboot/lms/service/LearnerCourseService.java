@@ -15,35 +15,37 @@ import com.springboot.lms.repository.LearnerRepository;
 @Service
 public class LearnerCourseService {
 
-	private LearnerCourseRepository learnerCourseRepository;
-	private LearnerRepository learnerRepository;
 	private CourseRepository courseRepository;
+	private LearnerRepository learnerRepository;
+	private LearnerCourseRepository learnerCourseRepository;
 
-	public LearnerCourseService(LearnerCourseRepository learnerCourseRepository, LearnerRepository learnerRepository,
-			CourseRepository courseRepository) {
-		this.learnerCourseRepository = learnerCourseRepository;
-		this.learnerRepository = learnerRepository;
+	public LearnerCourseService(CourseRepository courseRepository, LearnerRepository learnerRepository,
+			LearnerCourseRepository learnerCourseRepository) {
+		super();
 		this.courseRepository = courseRepository;
+		this.learnerRepository = learnerRepository;
+		this.learnerCourseRepository = learnerCourseRepository;
 	}
 
 	public LearnerCourse enrollLearnerInCourse(int learnerId, int courseId, LearnerCourse learnerCourse) {
-		// fetch learner by learnerId
-		Learner learner = learnerRepository.findById(learnerId)
-				.orElseThrow(() -> new ResourceNotFoundException("Learner ID Invalid"));
-
-		// fetch course by courseId
+		// Fetch Learner by learnerId
+		 Learner learner = learnerRepository.findById(learnerId)
+		 	.orElseThrow(()-> new ResourceNotFoundException("Learner ID Invalid"));
+		 
+		// Fetch Course by courseId 
 		Course course = courseRepository.findById(courseId)
-				.orElseThrow(() -> new ResourceNotFoundException("Course ID Invalid"));
-
-		// generate and adds today date to learnerCourse object as enroll date
+		.orElseThrow(()-> new ResourceNotFoundException("Course ID Invalid"));
+		
+		// Generate todays date and attach it to learnerCourse object
 		learnerCourse.setEnrollDate(LocalDate.now());
-
-		// set learner and course to learnerCourse object
+		
+		// Attach Learner and Course to learnerCourse object 
 		learnerCourse.setLearner(learner);
 		learnerCourse.setCourse(course);
-
-		// save learnerCourse in DB
+		
+		// Save learnerCourse in DB
 		return learnerCourseRepository.save(learnerCourse);
 	}
-
+	
+	
 }
