@@ -1,8 +1,8 @@
 package com.springboot.lms.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,8 +35,8 @@ public class LearnerController {
 	 * Response: List<Learner>
 	 * */
 	@GetMapping("/api/learner/get-all")
-	public List<Learner> getAll() {
-		return learnerService.getAll();
+	public ResponseEntity<?> getAll() {
+		return ResponseEntity.status(HttpStatus.OK).body(learnerService.getAll());
 	}
 	
 	/*
@@ -47,8 +47,9 @@ public class LearnerController {
 	 *Input: id - pathVariable
 	 * */
 	@DeleteMapping("/api/learner/delete/{id}")
-	public void deleteLearner(@PathVariable int id) {
+	public ResponseEntity<?> deleteLearner(@PathVariable int id) {
 		learnerService.deleteLearner(id);
+		return ResponseEntity.status(HttpStatus.OK).body("Learner deleted");
 	}
 	/*
 	 * AIM: To fetch Learner by Id
@@ -58,8 +59,8 @@ public class LearnerController {
 	 * Input: id
 	 * */
 	@GetMapping("/api/learner/get-one/{id}")
-	public Learner getLearnerById(@PathVariable int id) {
-		return learnerService.getLearnerById(id);
+	public ResponseEntity<?> getLearnerById(@PathVariable int id) {
+		return ResponseEntity.status(HttpStatus.OK).body(learnerService.getLearnerById(id));
 	}
 	/*
 	 * AIM: To update learner
