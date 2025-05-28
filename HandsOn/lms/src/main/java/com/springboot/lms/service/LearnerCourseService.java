@@ -1,6 +1,7 @@
 package com.springboot.lms.service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -29,23 +30,30 @@ public class LearnerCourseService {
 
 	public LearnerCourse enrollLearnerInCourse(int learnerId, int courseId, LearnerCourse learnerCourse) {
 		// Fetch Learner by learnerId
-		 Learner learner = learnerRepository.findById(learnerId)
-		 	.orElseThrow(()-> new ResourceNotFoundException("Learner ID Invalid"));
-		 
-		// Fetch Course by courseId 
+		Learner learner = learnerRepository.findById(learnerId)
+				.orElseThrow(() -> new ResourceNotFoundException("Learner ID Invalid"));
+
+		// Fetch Course by courseId
 		Course course = courseRepository.findById(courseId)
-		.orElseThrow(()-> new ResourceNotFoundException("Course ID Invalid"));
-		
+				.orElseThrow(() -> new ResourceNotFoundException("Course ID Invalid"));
+
 		// Generate todays date and attach it to learnerCourse object
 		learnerCourse.setEnrollDate(LocalDate.now());
-		
-		// Attach Learner and Course to learnerCourse object 
+
+		// Attach Learner and Course to learnerCourse object
 		learnerCourse.setLearner(learner);
 		learnerCourse.setCourse(course);
-		
+
 		// Save learnerCourse in DB
 		return learnerCourseRepository.save(learnerCourse);
 	}
-	
-	
+
+	public List<Learner> getLearnerByCourseId(int courseId) {
+		return learnerCourseRepository.getLearnerByCourseId(courseId);
+	}
+
+	public List<Course> getCourseByLearnerId(int learnerId) {
+		return learnerCourseRepository.getCourseByLearnerId(learnerId);
+	}
+
 }
