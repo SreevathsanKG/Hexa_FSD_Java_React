@@ -7,6 +7,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -31,7 +33,9 @@ public class SecurityConfig {
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
+		.csrf((csrf) -> csrf.disable())					// -> makes to post
 			.authorizeHttpRequests((authorize) -> authorize
+				.requestMatchers("/api/user/signup").permitAll()
 				.anyRequest().authenticated()
 			)
 			.httpBasic(Customizer.withDefaults());		// -> this activated http basic technique
@@ -39,4 +43,8 @@ public class SecurityConfig {
 		return http.build();
 	}
 	
+	@Bean
+	PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 }

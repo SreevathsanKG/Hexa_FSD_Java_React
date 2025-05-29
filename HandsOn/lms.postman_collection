@@ -80,13 +80,25 @@
 					"name": "http://localhost:8080/api/learner/add",
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
 						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"Ronald Weasley\",\r\n    \"contact\":\"7654321098\"\r\n}",
+							"raw": "{\r\n    \"name\":\"Jack Sparrow\",\r\n    \"contact\":\"6543210987\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -113,7 +125,19 @@
 					"name": "http://localhost:8080/api/learner/get-all",
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [],
@@ -219,19 +243,31 @@
 			]
 		},
 		{
-			"name": "New Folder",
+			"name": "course",
 			"item": [
 				{
 					"name": "http://localhost:8080/api/course/add",
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
 						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"title\": \"Introduction to Programming\", \"credits\": 30}\r\n",
+							"raw": "{\"title\": \"Full Stack Java Spring Boot React\", \"credits\": 50}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -404,6 +440,43 @@
 								"enroll",
 								"learner",
 								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "localhost:8080/api/user/signup",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"albus@gamil.com\",\r\n    \"password\":\"albus@123\",\r\n    \"role\":\"AUTHOR\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/user/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"signup"
 							]
 						}
 					},
