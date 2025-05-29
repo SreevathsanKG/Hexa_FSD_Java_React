@@ -22,6 +22,7 @@ public class CourseController {
 	 * Method: POST
 	 * Response: Course
 	 * Input: Course <-- Request Body
+	 * ACCESS: AUTHOR or EXECUTIVE
 	 * */
 	@PostMapping("/add")
 	public Course postCourse(@RequestBody Course course) {

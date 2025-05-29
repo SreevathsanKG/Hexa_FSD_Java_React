@@ -1,5 +1,7 @@
 package com.springboot.lms.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -52,15 +54,16 @@ public class LearnerController {
 		return ResponseEntity.status(HttpStatus.OK).body("Learner deleted");
 	}
 	/*
-	 * AIM: To fetch Learner by Id
-	 * PATH: /api/learner/get-one/{id}
+	 * AIM: get learner by loggedIn credentials
+	 * PATH: /api/learner/get-one
 	 * Method: Get
+	 * PARAM: Principal
 	 * Response: Learner
-	 * Input: id
 	 * */
-	@GetMapping("/api/learner/get-one/{id}")
-	public ResponseEntity<?> getLearnerById(@PathVariable int id) {
-		return ResponseEntity.status(HttpStatus.OK).body(learnerService.getLearnerById(id));
+	@GetMapping("/api/learner/get-one")
+	public Learner getLearnerById(Principal principal) {
+		String username = principal.getName();
+		return learnerService.getLearnerByUsername(username);
 	}
 	/*
 	 * AIM: To update learner
@@ -73,6 +76,8 @@ public class LearnerController {
 	public Learner updateLearner(@PathVariable int id, @RequestBody Learner learner) {
 		return learnerService.updateLearner(id, learner);
 	}
+	
+	
 	/* 
 	 * {
 	    "name":"Harry Potter",
