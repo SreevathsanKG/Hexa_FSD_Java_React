@@ -17,10 +17,12 @@ public class Video {
 	private int id;
 	@Column(name = "video_title")
 	private String videoTitle;
-	@Column(name = "video_time")
-	private float videoTime;
+	@Column(name = "play_time")
+	private float playTime;
 	@Column(name = "video_code")
 	private String videoCode;
+	@Column(nullable = false )
+	private int sequence;
 	
 	@ManyToOne			// creates cmodule_id as a foreign key in video table
 	private CModule cmodule;
@@ -41,12 +43,12 @@ public class Video {
 		this.videoTitle = videoTitle;
 	}
 
-	public float getVideoTime() {
-		return videoTime;
+	public float getPlayTime() {
+		return playTime;
 	}
 
-	public void setVideoTime(float videoTime) {
-		this.videoTime = videoTime;
+	public void setPlayTime(float playTime) {
+		this.playTime = playTime;
 	}
 
 	public String getVideoCode() {
@@ -55,6 +57,14 @@ public class Video {
 
 	public void setVideoCode(String videoCode) {
 		this.videoCode = videoCode;
+	}
+
+	public int getSequence() {
+		return sequence;
+	}
+
+	public void setSequence(int sequence) {
+		this.sequence = sequence;
 	}
 
 	public CModule getCmodule() {

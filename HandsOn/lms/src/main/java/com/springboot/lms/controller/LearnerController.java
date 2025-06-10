@@ -1,8 +1,11 @@
 package com.springboot.lms.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,8 +38,8 @@ public class LearnerController {
 	 * Response: List<Learner>
 	 * */
 	@GetMapping("/api/learner/get-all")
-	public List<Learner> getAll() {
-		return learnerService.getAll();
+	public ResponseEntity<?> getAll() {
+		return ResponseEntity.status(HttpStatus.OK).body(learnerService.getAll());
 	}
 	
 	/*
@@ -47,19 +50,21 @@ public class LearnerController {
 	 *Input: id - pathVariable
 	 * */
 	@DeleteMapping("/api/learner/delete/{id}")
-	public void deleteLearner(@PathVariable int id) {
+	public ResponseEntity<?> deleteLearner(@PathVariable int id) {
 		learnerService.deleteLearner(id);
+		return ResponseEntity.status(HttpStatus.OK).body("Learner deleted");
 	}
 	/*
-	 * AIM: To fetch Learner by Id
-	 * PATH: /api/learner/get-one/{id}
+	 * AIM: get learner by loggedIn credentials
+	 * PATH: /api/learner/get-one
 	 * Method: Get
+	 * PARAM: Principal
 	 * Response: Learner
-	 * Input: id
 	 * */
-	@GetMapping("/api/learner/get-one/{id}")
-	public Learner getLearnerById(@PathVariable int id) {
-		return learnerService.getLearnerById(id);
+	@GetMapping("/api/learner/get-one")
+	public Learner getLearnerById(Principal principal) {
+		String username = principal.getName();
+		return learnerService.getLearnerByUsername(username);
 	}
 	/*
 	 * AIM: To update learner
@@ -72,6 +77,12 @@ public class LearnerController {
 	public Learner updateLearner(@PathVariable int id, @RequestBody Learner learner) {
 		return learnerService.updateLearner(id, learner);
 	}
+	
+	@GetMapping("/api/learner/course/{courseId}")
+	public List<?> getLearnerByCourseId(@PathVariable int courseId){
+		return learnerService.getLearnerByCourseId(courseId);
+	}
+	
 	/* 
 	 * {
 	    "name":"Harry Potter",
