@@ -4,6 +4,7 @@ import Concepts from "./components/Concepts"
 import CourseList from "./components/CourseList"
 import Example1 from "./components/Example1"
 import Example2 from "./components/Example2"
+import LearnerSignup from "./components/LearnerSignup"
 import Login from "./components/Login"
 import Post from "./components/Post"
 import Task from "./components/Task"
@@ -25,7 +26,8 @@ function App() {
       {/**<Example1 />**/}
       {/**<Example2 />**/}
       {/**<CourseList/>**/}
-      <Login/>
+      {/**<Login/>**/}
+      <LearnerSignup/>
     </div>
   )
 }
