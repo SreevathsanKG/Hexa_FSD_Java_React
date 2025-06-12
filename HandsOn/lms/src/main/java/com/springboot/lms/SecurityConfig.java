@@ -29,7 +29,7 @@ public class SecurityConfig {
 				.requestMatchers("/api/learner/add").permitAll()
 				.requestMatchers("/api/learner/get-one").hasAuthority("LEARNER")
 				.requestMatchers("/api/course/add").hasAnyAuthority("AUTHOR")
-				.requestMatchers("/api/course/all").permitAll()
+				.requestMatchers("/api/course/get/all").permitAll()
 				.requestMatchers("/api/author/post").permitAll()
 				.requestMatchers("/api/module/add/{courseId}").hasAuthority("AUTHOR")
 				.requestMatchers("/api/video/add/{moduleId}").hasAuthority("AUTHOR")

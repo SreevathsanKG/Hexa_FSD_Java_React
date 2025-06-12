@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,7 @@ import com.springboot.lms.service.CourseService;
 
 @RestController
 @RequestMapping("/api/course")
+@CrossOrigin(origins = "http://localhost:5173")
 public class CourseController {
 
 	@Autowired
