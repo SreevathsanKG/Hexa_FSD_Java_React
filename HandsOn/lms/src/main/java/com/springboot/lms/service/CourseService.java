@@ -41,5 +41,8 @@ public class CourseService {
         return courseRepository.findAll(pageable).getContent();
 	}
 	
+	public List<Course> getCourseByAuthor(String username) {
+		return courseRepository.getCourseByAuthor(username);
+	}
 	
 }

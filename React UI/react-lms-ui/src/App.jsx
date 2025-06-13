@@ -1,18 +1,14 @@
 import { Route } from "react-router-dom"
 import { BrowserRouter } from "react-router-dom"
 import { Routes } from "react-router-dom"
-import AddPost from "./components/AddPost"
-import Album from "./components/Album"
-import Concepts from "./components/Concepts"
-import CourseList from "./components/CourseList"
-import Example1 from "./components/Example1"
-import Example2 from "./components/Example2"
 import LearnerSignup from "./components/LearnerSignup"
 import Login from "./components/Login"
-import Post from "./components/Post"
-import Task from "./components/Task"
-import TodoList from "./components/Todo"
-import UserList from "./components/User"
+import AuthorDashboard from "./components/author/AuthorDashboard.jsx"
+import LearnerDashboard from "./components/LearnerDashboard.jsx"
+import Stats from "./components/author/Stats.jsx"
+import Courses from "./components/author/Courses";
+import Enrollments from "./components/author/Enrollments";
+import Profile from "./components/author/Profile";
 
 function App() {
 
@@ -23,8 +19,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Login/>}></Route>
           <Route path="/signup" element={<LearnerSignup/>}></Route>
-          <Route path="/author" element={<Post/>}></Route>
-          <Route path="/Learner" element={<CourseList/>}></Route>
+          <Route path="/author" element={<AuthorDashboard/>}>
+            <Route index element={<Stats/>}/>
+            <Route path="courses" element={<Courses />} />
+            <Route path="enrollments" element={<Enrollments />} />
+            <Route path="profile" element={<Profile />} />
+          </Route>
+          <Route path="/Learner" element={<LearnerDashboard/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

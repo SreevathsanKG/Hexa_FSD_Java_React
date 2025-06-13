@@ -20,6 +20,7 @@ public class Course {
 	@Column(nullable = false)
 	private String title;
 	private int credits;
+	private String imageUrl;
 	@ManyToOne
 	private Author author;
 	
@@ -46,6 +47,12 @@ public class Course {
 	}
 	public void setAuthor(Author author) {
 		this.author = author;
+	}	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 	
 	@Override
