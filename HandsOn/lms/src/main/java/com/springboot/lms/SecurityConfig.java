@@ -23,8 +23,8 @@ public class SecurityConfig {
 		http
 		.csrf((csrf) -> csrf.disable())					// -> makes to post
 			.authorizeHttpRequests((authorize) -> authorize
-				.requestMatchers("/api/user/token").authenticated()
-				.requestMatchers("/api/user/details").authenticated()
+				.requestMatchers("/api/user/token").permitAll()
+				.requestMatchers("/api/user/details").permitAll()
 				.requestMatchers("/api/learner/get-all").permitAll()
 				.requestMatchers("/api/learner/add").permitAll()
 				.requestMatchers("/api/learner/get-one").hasAuthority("LEARNER")

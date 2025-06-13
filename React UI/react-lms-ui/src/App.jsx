@@ -1,3 +1,6 @@
+import { Route } from "react-router-dom"
+import { BrowserRouter } from "react-router-dom"
+import { Routes } from "react-router-dom"
 import AddPost from "./components/AddPost"
 import Album from "./components/Album"
 import Concepts from "./components/Concepts"
@@ -16,18 +19,14 @@ function App() {
 
   return (
     <div>
-      {/**<Concepts />**/}
-      {/**<Task />**/}
-      {/**<Todo />**/}
-      {/**<UserList />**/}
-      {/**<Post />**/}
-      {/**<Album />**/}
-      {/**<AddPost />**/}
-      {/**<Example1 />**/}
-      {/**<Example2 />**/}
-      {/**<CourseList/>**/}
-      {/**<Login/>**/}
-      <LearnerSignup/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login/>}></Route>
+          <Route path="/signup" element={<LearnerSignup/>}></Route>
+          <Route path="/author" element={<Post/>}></Route>
+          <Route path="/Learner" element={<CourseList/>}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }
