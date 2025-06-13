@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import '../../css/author.css';
 import Sidebar from './Sidebar';
 import { Outlet } from 'react-router-dom';
+import Navbar from './Navbar';
 
 function AuthorDashboard() {
     // State to track if the sidebar/overlay is "closed" (meaning the overlay is hidden and sidebar is collapsed)
@@ -35,16 +36,16 @@ function AuthorDashboard() {
     };
 
     return (
-        <div>
+        <div className='col-lg-12'>
             <div id="wrapper" ref={wrapperRef}>
+                <Navbar />
                 <div
                     className="overlay"
                     ref={overlayRef}
                     style={{ display: isClosed ? 'none' : 'block' }}
                 ></div>
+                <Sidebar />
 
-                {/* Sidebar */}
-                <Sidebar/>
                 <div id="page-content-wrapper">
                     {/* Hamburger button controlled by state and click handler */}
                     <button
@@ -59,14 +60,12 @@ function AuthorDashboard() {
                     </button>
                     <div className="container">
                         <div className="row">
-                            <Outlet/>
+                            <Outlet />
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
-
     )
 }
 
