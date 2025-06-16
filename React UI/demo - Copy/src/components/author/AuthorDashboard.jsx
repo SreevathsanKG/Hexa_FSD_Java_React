@@ -44,7 +44,11 @@ function AuthorDashboard() {
                     ref={overlayRef}
                     style={{ display: isClosed ? 'none' : 'block' }}
                 ></div>
-                <Sidebar/>
+                <Sidebar
+    setIsClosed={setIsClosed}
+    overlayRef={overlayRef}
+    wrapperRef={wrapperRef}
+/>
 
                 <div id="page-content-wrapper">
                     {/* Hamburger button controlled by state and click handler */}
