@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,5 +50,10 @@ public class CourseController {
 	public List<Course> getCourseByAuthor(Principal principal) {
 		String username = principal.getName();
 		return courseService.getCourseByAuthor(username);
+	}
+	
+	@GetMapping("/get-by/id/{id}")
+	public Course getCourseById(@PathVariable int id) {
+		return courseService.getCourseById(id);
 	}
 }

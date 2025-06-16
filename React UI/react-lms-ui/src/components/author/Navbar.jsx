@@ -15,7 +15,7 @@ function Navbar() {
                 <div className="form-inline mt-2 mb-4 ">
                     Welcome {name}
                     &nbsp;&nbsp;&nbsp;
-                    <button class="btn btn-outline-success" onClick={() => logout()}>Logout</button>
+                    <button className="btn btn-outline-success" onClick={() => logout()}>Logout</button>
 
                 </div>
 

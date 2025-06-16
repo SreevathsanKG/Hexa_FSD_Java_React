@@ -32,4 +32,8 @@ public class VideoService {
         list.parallelStream().forEach(v -> v.setCmodule(module));
         videoRepository.saveAll(list);
     }
+	
+	public List<Video> getVideoByCourseId(int courseId) {
+		return videoRepository.getVideoByCourseId(courseId);
+	}
 }

@@ -45,4 +45,7 @@ public class CourseService {
 		return courseRepository.getCourseByAuthor(username);
 	}
 	
+	public Course getCourseById(int id) {
+		return courseRepository.findById(id).orElseThrow(() -> new RuntimeException("ID is Invalid"));
+	}
 }

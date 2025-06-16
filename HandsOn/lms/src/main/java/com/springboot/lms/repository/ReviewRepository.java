@@ -13,4 +13,7 @@ public interface ReviewRepository extends JpaRepository<Review, Integer>{
 	@Query("select r from Review r where r.rating>?1")
 	List<Review> getByRating(String rating);				// user written JPQL
 	List<Review> findByRatingGreaterThan(String rating);	// Jpa writes query and gives list of review greater than given value
+	
+	@Query("select r from Review r where r.learnerCourse.course.id=?1")
+	List<Review> getReviewByCourseId(int courseId);
 }

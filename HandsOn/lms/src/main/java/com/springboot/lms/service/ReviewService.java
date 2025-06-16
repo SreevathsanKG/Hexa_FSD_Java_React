@@ -40,6 +40,11 @@ public class ReviewService {
 		return reviewRepository.getByRating(rating);				// for user written JPQL query
 //		return reviewRepository.findByRatingGreaterThan(rating);	// for Jpa written inbulit method
 	}
+
+	// fetch review by courseId
+	public List<Review> getReviewByCourseId(int courseId) {
+		return reviewRepository.getReviewByCourseId(courseId);
+	}
 	
 	
 
