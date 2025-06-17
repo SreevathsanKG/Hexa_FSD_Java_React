@@ -1,6 +1,8 @@
 import axios from "axios"
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { useNavigate, Link } from "react-router-dom"
+import { setUserDetails } from "../store/actions/UserAction"
 
 function Login() {
 
@@ -9,6 +11,7 @@ function Login() {
     let [msg, setMsg] = useState("")
 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const processLogin = async () => {
         // encode username and password using btoa
@@ -27,6 +30,12 @@ function Login() {
                 headers: {"Authorization":"Bearer "+ token}
             })
             // console.log(details)
+
+            let user = { 
+                'username': username,
+                'role': details.data.user.role
+            }
+            setUserDetails(dispatch)(user) // <-- this is where i saave thisuser details in store
 
             let role = details.data.user.role
             switch (role) {
@@ -80,7 +89,7 @@ function Login() {
                             </div>
                         </div>
                         <div className="card-footer">
-                            Don't have an account? Sign Up here.
+                            Don't have an account? <Link onClick={() => navigate("/signup")} to="/signup">Sign Up</Link>
                         </div>
                     </div>
                 </div>

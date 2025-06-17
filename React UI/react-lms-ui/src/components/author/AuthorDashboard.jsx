@@ -1,10 +1,18 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import '../../css/author.css';
 import Sidebar from './Sidebar';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 
 function AuthorDashboard() {
+
+    //makes not to navigate back after log out
+     const navigate = useNavigate()
+    useEffect(() => {
+        let token = localStorage.getItem('token');
+        if (token == null || token == undefined || token == "")
+            navigate("/")
+    }, []);
     // State to track if the sidebar/overlay is "closed" (meaning the overlay is hidden and sidebar is collapsed)
     const [isClosed, setIsClosed] = useState(true);
 
