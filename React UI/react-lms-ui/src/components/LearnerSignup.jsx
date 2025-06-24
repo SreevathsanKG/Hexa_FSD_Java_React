@@ -26,15 +26,18 @@ function LearnerSignup() {
     }
 
     return (
-        <div className="container">
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col-md-12"> <br /><br /><br /><br /><br /></div>
+            </div>
             <div className="row">
                 <div className="col-md-2"></div>
                 <div className="col-md-8">
                     <div className="card">
-                        <div className="card-header">
+                        {/* <div className="card-header">
                             <div className="text-center">REGISTRATION</div>
-                        </div>
-                        <div className="card-body">
+                        </div> */}
+                        <div className="card-body px-4">
                             {
                                 msg!=""?<div>
                                     <div className="alert alert-info">{msg}</div>
@@ -60,9 +63,9 @@ function LearnerSignup() {
                                 <button className="btn btn-primary" onClick = {() => postLearner()}>Submit</button>
                             </div>
                         </div>
-                        <div className="card-footer">
+                        {/* <div className="card-footer">
                             Already have an account? Login
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className="col-ms-2"></div>

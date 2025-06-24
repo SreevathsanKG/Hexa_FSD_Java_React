@@ -10,6 +10,7 @@ import Courses from "./components/author/Courses";
 import Enrollments from "./components/author/Enrollments";
 import Profile from "./components/author/Profile";
 import CourseDetails from "./components/author/CourseDetails.jsx"
+import UploadProfilePic from "./components/author/UploadProfilePic.jsx"
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
             <Route path="enrollments" element={<Enrollments />} />
             <Route path="profile" element={<Profile />} />
             <Route path="course-details/:cid" element={<CourseDetails/>}/>
+            <Route path="upload-profile-pic" element={<UploadProfilePic />} />
           </Route>
           <Route path="/Learner" element={<LearnerDashboard/>}></Route>
         </Routes>
