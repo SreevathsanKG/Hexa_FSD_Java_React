@@ -59,7 +59,7 @@ function EditUser() {
                 }
                 <div className="col-md-12">
                     <div className="card text-start">
-                        <div className="card-header">
+                        <div className="card-header text-center">
                             <h1>Edit User</h1>
                         </div>
                         <div className="card-body">

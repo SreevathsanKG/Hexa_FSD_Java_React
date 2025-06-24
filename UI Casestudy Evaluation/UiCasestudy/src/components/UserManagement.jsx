@@ -6,11 +6,6 @@ import { useNavigate } from "react-router-dom"
 function UserManagement() {
 
     const navigate = useNavigate()
-    let [id, setId] = useState("")
-    let [name, setName] = useState("")
-    let [email, setEmail] = useState("")
-    let [gender, setGender] = useState("")
-    let [status, setStatus] = useState("")
     let [users, setUsers] = useState([])
     let [msg, setMsg] = useState("")
     

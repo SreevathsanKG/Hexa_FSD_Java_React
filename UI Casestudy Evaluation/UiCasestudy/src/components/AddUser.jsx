@@ -1,10 +1,9 @@
 import axios from "axios"
 import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 function AddUser() {
 
-    let [id, setId] = useState(undefined)
     let [name, setName] = useState("")
     let [email, setEmail] = useState("")
     let [gender, setGender] = useState("")
@@ -13,8 +12,11 @@ function AddUser() {
 
     const addUsers = async () => {
         try {
+            if(!name||!email||!gender||!status){
+                setMsg("Please fill all the fields")
+                return
+            }
             const resp = await axios.post("https://gorest.co.in/public/v2/users", {
-                id,
                 "name": name,
                 "email": email,
                 "gender": gender,
@@ -42,21 +44,17 @@ function AddUser() {
                 }
                 <div className="col-md-12">
                     <div className="card text-start">
-                        <div className="card-header">
+                        <div className="card-header text-center">
                             <h1>Add User</h1>
                         </div>
                         <div className="card-body">
                             <div className="mb-3">
-                                <label>Enter ID: </label>
-                                <input type="number" onChange={(e) => setId(e.target.value)} className="form-control" />
-                            </div>
-                            <div className="mb-3">
                                 <label>Enter Name: </label>
-                                <input type="text" onChange={(e) => setName(e.target.value)} className="form-control" />
+                                <input type="text" onChange={(e) => setName(e.target.value)} className="form-control"/>
                             </div>
                             <div className="mb-3">
                                 <label>Enter Email: </label>
-                                <input type="text" onChange={(e) => setEmail(e.target.value)} className="form-control" />
+                                <input type="text" onChange={(e) => setEmail(e.target.value)} className="form-control"/>
                             </div>
                             <div className="mb-3">
                                 <label>Enter Gender: </label>
@@ -73,7 +71,7 @@ function AddUser() {
                             </div>
                             <div className="mb-3">
                                 <label>Enter Status: </label>
-                                <input type="text" onChange={(e) => setStatus(e.target.value)} className="form-control" />
+                                <input type="text" onChange={(e) => setStatus(e.target.value)} className="form-control"/>
                             </div>
                         </div>
                         <div className="card-footer">
