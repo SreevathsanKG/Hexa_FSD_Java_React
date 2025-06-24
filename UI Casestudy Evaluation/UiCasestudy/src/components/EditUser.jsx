@@ -68,28 +68,28 @@ function EditUser() {
                             </div>
                             <div className="mb-3">
                                 <label>Enter Name: </label>
-                                <input type="text" onChange={(e) => setName(e.target.value)} className="form-control" />
+                                <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="form-control" />
                             </div>
                             <div className="mb-3">
                                 <label>Enter Email: </label>
-                                <input type="text" onChange={(e) => setEmail(e.target.value)} className="form-control" />
+                                <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" />
                             </div>
                             <div className="mb-3">
                                 <label>Enter Gender: </label>
                                 <div >
-                                    <input className="form-check-input" type="radio" name="gender" value={"MALE"}
+                                    <input className="form-check-input" type="radio" name="gender" value="male" checked={gender == "male"}
                                         onChange={(e) => setGender(e.target.value)} />
                                     <label className="form-check-label" >Male</label>
                                 </div>
                                 <div>
-                                    <input className="form-check-input" type="radio" name="gender" value={"FEMALE"}
+                                    <input className="form-check-input" type="radio" name="gender" value="female" checked={gender=="female"}
                                         onChange={(e) => setGender(e.target.value)} />
                                     <label className="form-check-label" >Female</label>
                                 </div>
                             </div>
                             <div className="mb-3">
                                 <label>Enter Status: </label>
-                                <input type="text" onChange={(e) => setStatus(e.target.value)} className="form-control" />
+                                <input type="text" value={status} onChange={(e) => setStatus(e.target.value)} className="form-control" />
                             </div>
                         </div>
                         <div className="card-footer">
