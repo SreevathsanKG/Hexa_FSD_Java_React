@@ -1,0 +1,60 @@
+package com.springcore.main.dao;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+
+import com.springcore.main.model.Address;
+import com.springcore.main.model.PolicyHolder;
+
+@Repository
+public class PolicyHolderDao {
+	
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+
+	public PolicyHolderDao(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+	
+	public void insert(PolicyHolder policyHolder) {
+		String sql = "insert into policyholder(name,panNO,address_id) values(?,?,?)";
+		jdbcTemplate.update(sql,policyHolder.getName(),policyHolder.getPanNo(),policyHolder.getAddress().getId());
+	}
+	
+	public void insertAddress(Address address) {
+		String sql = "insert into address(id,street,city,state) values(?,?,?,?)";
+		jdbcTemplate.update(sql,address.getId(),address.getStreet(),address.getCity(),address.getState());
+	}
+	
+	public List<Map<String,Object>> getAllWithAddress(){
+		String sql = "select * from policyholder p join address a on p.address_id=a.id";
+		return jdbcTemplate.queryForList(sql);
+	}
+	public List<PolicyHolder> getAllWithAddressv2(){
+		String sql = "select * from policyholder p join address a on p.address_id=a.id";
+		return jdbcTemplate.query(sql, new RowMapper<PolicyHolder>() {
+			@Override
+			public PolicyHolder mapRow(ResultSet rst, int rowNum) throws SQLException {
+				PolicyHolder ph = new PolicyHolder();
+				ph.setId(rst.getInt("id"));
+				ph.setName(rst.getString("name"));
+				ph.setPanNo(rst.getString("panNo"));
+				Address address = new Address();
+				address.setId(rst.getInt("id"));
+				address.setStreet(rst.getString("street"));
+				address.setCity(rst.getString("city"));
+				address.setState(rst.getString("state"));
+				ph.setAddress(address);
+				
+				return ph;
+			}
+		});
+	}
+}
